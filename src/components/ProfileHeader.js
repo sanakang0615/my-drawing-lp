@@ -26,9 +26,9 @@ const ProfileHeader = () => {
 
       <div className="flex items-center justify-center h-full">
         <LiaAngleDownSolid 
-          className="mt-10 mb-2 cursor-pointer" 
-          style={{ width: '60px', height: '30px', color: 'rgba(75, 85, 99, 0.2)' }} 
-          onClick={handleScroll} // 클릭 이벤트 핸들러 추가
+          className="mt-16 mb-20 cursor-pointer" 
+          style={{ width: '60px', height: '30px', color: '#4B5563',opacity: '0.3' }} // Adjusted color to match the text
+          onClick={handleScroll} 
         />
       </div>
 

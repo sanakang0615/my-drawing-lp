@@ -22,7 +22,12 @@ function App() {
       <Header artworks={items} items={items} />
       <ProfileHeader/>
       <section id="gallery" className="pb-16 px-6">
-        <h2 className="text-4xl font-bold text-gray-600 text-center mb-10 grey-qo-regular" style={{fontWeight: 500}}>Track List</h2>
+      <h2 
+        className="text-4xl font-bold text-gray-600 text-center mb-10 grey-qo-regular" 
+        style={{ fontWeight: 500, color: '#4B5563', opacity: '0.4' }} // Matching the color with the icon
+      >
+        Track List
+      </h2>
         <PinterestGrid items={items} onItemSelected={handleItemSelected} />
       </section>
       {currentItem && (
