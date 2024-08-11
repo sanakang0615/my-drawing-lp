@@ -27,8 +27,9 @@ const PinterestGrid = ({ items, onItemSelected }) => {
             className="w-full h-auto object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
           />
           <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
-          <div className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <text className="text-lg font-bold gupter-regular">{item.alt}</text>
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p className="text-2xl font-bold gupter-regular text-center">{item.alt}</p>
+            <p className="text-md font-bold gupter-regular text-center">{item.artist}</p>
           </div>
           <button 
             className="absolute top-2 right-2 bg-white text-black px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md"
