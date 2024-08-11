@@ -17,7 +17,7 @@ const Header = ({ artworks, spotifyId, items }) => {
         </div>
         <div className="flex items-center items-justify space-x-4">
           <button className="text-gray-500 hover:text-black" onClick={scrollToTop}>
-            <GrLinkTop size={20} style={{color: 'rgba(75, 85, 99, 0.12)'}}/>
+            <GrLinkTop size={20} style={{color: 'rgba(75, 85, 99, 0.22)'}}/>
           </button>
         </div>
 
