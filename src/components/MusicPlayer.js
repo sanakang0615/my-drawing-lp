@@ -3,6 +3,7 @@ import { IoPlaySharp, IoPauseSharp, IoVolumeMediumOutline } from "react-icons/io
 
 const MusicPlayer = ({ currentItem, onClose }) => {
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [volume, setVolume] = useState(0.5); 
   const [audio, setAudio] = useState(null);
@@ -26,6 +27,7 @@ const MusicPlayer = ({ currentItem, onClose }) => {
       newAudio.play()
         .then(() => {
           setIsPlaying(true); 
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error("Error attempting to play audio:", error);
@@ -87,20 +89,24 @@ const MusicPlayer = ({ currentItem, onClose }) => {
             {isPlaying ? <IoPauseSharp/> : <IoPlaySharp/>}
           </button>
         </div>
-        <div className="w-full flex items-center space-x-3">
-          <span className="text-xs text-gray-400">{audio && formatTime(audio.currentTime)}</span>
-          <input
-            type="range"
-            value={progress}
-            onChange={(e) => {
-              if (audio) {
-                audio.currentTime = (e.target.value / 100) * audio.duration;
-              }
-            }}
-            className="w-full h-1 bg-gray-600 rounded-full appearance-none mx-4"
-          />
-          <span className="text-xs text-gray-400">{audio && formatTime(audio.duration)}</span>
-        </div>
+        {isLoading ? (
+          <div className="gupter-regular items-center items-justify text-sm text-gray-400 "> Loading... </div>
+        ) : (
+          <div className="justify-items w-full flex items-center space-x-3">
+            <span className="text-xs text-gray-400">{audio && formatTime(audio.currentTime)}</span>
+            <input
+              type="range"
+              value={progress}
+              onChange={(e) => {
+                if (audio) {
+                  audio.currentTime = (e.target.value / 100) * audio.duration;
+                }
+              }}
+              className="w-full h-1 bg-gray-600 rounded-full appearance-none"
+            />
+            <span className="text-xs text-gray-400">{audio && formatTime(audio.duration)}</span>
+          </div>
+        )}
       </div>
       <div className="hidden sm:flex items-center space-x-3 w-full sm:w-auto">
         <div className="text-gray-400 text-lg"><IoVolumeMediumOutline/></div>
