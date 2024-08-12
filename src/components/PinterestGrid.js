@@ -37,7 +37,7 @@ const PinterestGrid = ({ items, onItemSelected }) => {
       {items.map((item, index) => (
         <div
           key={index}
-          className={`relative mb-4 break-inside-avoid overflow-hidden rounded-lg transform transition-all duration-500 ease-in-out opacity-0 animate-fadeInUp group ${isMobile ? 'scroll-snap-child' : ''}`}
+          className={`cursor-pointer relative mb-4 break-inside-avoid overflow-hidden rounded-lg transform transition-all duration-500 ease-in-out opacity-0 animate-fadeInUp group ${isMobile ? 'scroll-snap-child' : ''}`}
           onClick={() => handleClick(item)}
         >
           <img

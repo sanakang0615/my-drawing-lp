@@ -38,11 +38,15 @@ function App() {
         {isContentLoaded && (
           <>
             <h2 
-              className="text-4xl font-bold text-gray-600 text-center mb-10 grey-qo-regular" 
+              className="text-3xl md:text-4xl font-bold text-gray-600 text-center mb-10 nanum-myeongjo-regular" 
               style={{ fontWeight: 500, color: '#4B5563', opacity: '0.4' }}
             >
               Track List
+              <p className="text-xs text-gray-600 text-center mt-1 mb-10 nanum-myeongjo-regular" style={{ opacity: '0.7' }}>
+                그림을 클릭하면 노래와 함께 감상할 수 있습니다.
+              </p>
             </h2>
+            
             <PinterestGrid items={items} onItemSelected={handleItemSelected} />
           </>
         )}
@@ -55,7 +59,7 @@ function App() {
           onClose={handleClosePlayer}
         />
       )}
-      <Footer />
+      {isContentLoaded && (<Footer />)}
     </div>
   );
 }
