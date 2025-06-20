@@ -116,39 +116,39 @@ const MusicPlayer = ({ currentItem, onClose }) => {
             <div className="flex items-center gap-4 w-1/4 min-w-0">
               <img src={currentItem.src} alt={currentItem.alt} className="w-12 h-12 rounded-md object-cover flex-shrink-0" />
               <div className="min-w-0">
-                <p className="font-bold text-gray-800 dark:text-gray-200 gupter-bold truncate">{currentItem.alt}</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400 gupter-regular truncate">{currentItem.artist}</p>
+                <p className="font-bold text-gray-800 gupter-bold truncate">{currentItem.alt}</p>
+                <p className="text-sm text-gray-500 gupter-regular truncate">{currentItem.artist}</p>
               </div>
             </div>
 
             {/* Player Controls */}
             <div className="flex-grow flex items-center justify-center gap-4 w-1/2">
-              <button onClick={handlePlayPause} className="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors" disabled={isLoading}>
+              <button onClick={handlePlayPause} className="text-gray-700 hover:text-black transition-colors" disabled={isLoading}>
                 {isPlaying ? <IoPauseSharp size={30}/> : <IoPlaySharp size={30}/>}
               </button>
               <div className="w-full flex items-center gap-2">
-                <span className="text-xs font-mono text-gray-500 dark:text-gray-400 w-10 text-center">{formatTime(currentTime)}</span>
+                <span className="text-xs font-mono text-gray-500 w-10 text-center">{formatTime(currentTime)}</span>
                 <input
                   type="range"
                   value={progress || 0}
                   onChange={handleSeek}
-                  className="w-full h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full appearance-none cursor-pointer disabled:cursor-not-allowed"
+                  className="w-full h-1.5 bg-gray-300 rounded-full appearance-none cursor-pointer disabled:cursor-not-allowed"
                   disabled={isLoading}
                 />
-                <span className="text-xs font-mono text-gray-500 dark:text-gray-400 w-10 text-center">{formatTime(duration)}</span>
+                <span className="text-xs font-mono text-gray-500 w-10 text-center">{formatTime(duration)}</span>
               </div>
             </div>
 
             {/* Volume & Close */}
             <div className="flex items-center gap-4 w-1/4 justify-end">
                <div className="hidden sm:flex items-center gap-2">
-                 <IoVolumeMediumOutline className="text-gray-600 dark:text-gray-400" size={20}/>
+                 <IoVolumeMediumOutline className="text-gray-600" size={20}/>
                  <input
                    type="range" min="0" max="1" step="0.01" value={volume} onChange={handleVolumeChange}
-                   className="w-24 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full appearance-none cursor-pointer"
+                   className="w-24 h-1.5 bg-gray-300 rounded-full appearance-none cursor-pointer"
                  />
                </div>
-               <button onClick={onClose} className="text-gray-500 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors text-2xl font-light">
+               <button onClick={onClose} className="text-gray-500 hover:text-black transition-colors text-2xl font-light">
                  ✕
                </button>
             </div>
