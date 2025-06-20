@@ -1,42 +1,30 @@
-import React, { useRef } from 'react';
-import { LiaAngleDownSolid } from "react-icons/lia";
+import React from 'react';
+import items from '../items.json';
 
 const ProfileHeader = () => {
-  // Ref를 사용하여 아래로 스크롤할 컴포넌트를 참조
-  const targetRef = useRef(null);
-
-  const handleScroll = () => {
-    // 클릭 시 targetRef가 참조하는 요소로 스크롤 이동
-    if (targetRef.current) {
-      targetRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const totalTracks = items.length;
 
   return (
-    <div className="text-center z-10">
-      {/* <h1 className="text-6xl font-bold mb-4">Music to be Drawn by</h1> */}
-      
-      <div className="relative flex justify-center">
+    <div className="flex flex-col md:flex-row items-center gap-10 px-6 md:px-12 animate-fadeIn pt-12 md:pt-16">
+      <div className="flex-shrink-0 w-48 h-48 md:w-64 md:h-64">
         <img 
-          src='/lp-asset.png' 
-          alt="LP Record" 
-          className="w-6/12 min-w-80 h-auto mt-40 mb-20 relative z-10"
+          src='/lp-asset-2.png' 
+          alt="Album Art for Music to be Drawn by" 
+          className="w-full h-full object-cover rounded-lg shadow-2xl"
         />
       </div>
-
-      <div className="flex items-center justify-center h-full">
-        <LiaAngleDownSolid 
-          className="mt-16 mb-20 cursor-pointer" 
-          style={{ width: '60px', height: '30px', color: '#4B5563',opacity: '0.3' }} // Adjusted color to match the text
-          onClick={handleScroll} 
-        />
+      <div className="flex flex-col items-center md:items-start text-center md:text-left">
+        <p className="text-sm font-semibold text-gray-500 dark:text-gray-500 uppercase tracking-wider">Album</p>
+        <h1 className="text-4xl md:text-6xl font-bold my-2 text-gray-800 dark:text-gray-200 grey-qo-regular">
+          Music to be Drawn by
+        </h1>
+        <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-400 font-semibold gupter-medium">
+          Sana Kang
+        </h2>
+        <p className="text-sm text-gray-500 dark:text-gray-500 mt-4">
+          {`2024 • ${totalTracks} songs`}
+        </p>
       </div>
-
-      {/* 타겟 요소 */}
-      <div ref={targetRef}>
-      </div>
-
-      
     </div>
   );
 };

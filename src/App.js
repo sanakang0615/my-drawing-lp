@@ -5,60 +5,62 @@ import Footer from './components/Footer';
 import MusicPlayer from './components/MusicPlayer';
 import items from './items.json'; // Assuming you have the JSON file
 import ProfileHeader from './components/ProfileHeader';
+import ImageModal from './components/ImageModal';
+import { useTheme } from './hooks/useTheme';
 import './index.css';
 
 function App() {
   const [currentItem, setCurrentItem] = useState(null);
   const [isContentLoaded, setIsContentLoaded] = useState(false); // New state to control rendering
+  const [theme, toggleTheme] = useTheme();
 
   const handleItemSelected = (item) => {
     setCurrentItem(item);
   };
 
-  const handleClosePlayer = () => {
+  const handleClose = () => {
     setCurrentItem(null);
   };
 
-  // Use useEffect to delay the rendering of PinterestGrid
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsContentLoaded(true);
-    }, 1000); // Delay to ensure other components are loaded first
-
-    return () => clearTimeout(timer); // Clean up the timer on component unmount
+    }, 200);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Header artworks={items} items={items} />
-      <ProfileHeader />
-      <section id="gallery" className="pb-16 px-6">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <Header theme={theme} toggleTheme={toggleTheme} />
+      
+      <main className="pt-16">
+        <ProfileHeader />
         
-        {/* Conditionally render PinterestGrid only after other components are loaded */}
-        {isContentLoaded && (
-          <>
-            <h2 
-              className="text-3xl md:text-4xl font-bold text-gray-600 text-center mb-10 nanum-myeongjo-regular" 
-              style={{ fontWeight: 500, color: '#4B5563', opacity: '0.4' }}
-            >
-              Track List
-              <p className="text-xs text-gray-600 text-center mt-1 mb-10 nanum-myeongjo-regular" style={{ opacity: '0.7' }}>
-                그림을 클릭하면 노래와 함께 감상할 수 있습니다.
-              </p>
-            </h2>
-            
-            <PinterestGrid items={items} onItemSelected={handleItemSelected} />
-          </>
-        )}
-      </section>
+        <section id="gallery" className="py-12 md:py-20 px-6 md:px-12">
+          {isContentLoaded && (
+            <div className="max-w-7xl mx-auto">
+              <div className="w-full border-t border-gray-200 dark:border-gray-700 my-8 md:my-12"></div>
+              <PinterestGrid items={items} onItemSelected={handleItemSelected} />
+            </div>
+          )}
+        </section>
+      </main>
+      
       {currentItem && (
-        <MusicPlayer
-          artwork={items}
-          currentItem={currentItem}
-          key={currentItem.src}
-          onClose={handleClosePlayer}
-        />
+        <>
+          <MusicPlayer
+            artwork={items}
+            currentItem={currentItem}
+            key={currentItem.src}
+            onClose={handleClose}
+          />
+          <ImageModal 
+            item={currentItem}
+            onClose={handleClose}
+          />
+        </>
       )}
+      
       {isContentLoaded && (<Footer />)}
     </div>
   );

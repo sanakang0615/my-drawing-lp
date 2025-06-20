@@ -1,27 +1,28 @@
 // src/components/Header.js
 import React from 'react';
-import MusicPlayer from './MusicPlayer';
-import { IoArrowUpCircle } from "react-icons/io5";
-import { GrLinkTop } from "react-icons/gr";
-const Header = ({ artworks, spotifyId, items }) => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+import { FaSpotify, FaApple } from 'react-icons/fa';
+import { IoSunny, IoMoon } from 'react-icons/io5';
 
+const Header = ({ theme, toggleTheme }) => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
-      <div className="container mx-auto px-4 py-2 flex items-center justify-between">
-        {/* Left section (Logo and Home Button) */}
-        <div className="flex items-center space-x-4">
-          <a href="/" className="text-black-500 text-2xl font-semibold grey-qo-regular">@musicdrawnby</a>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 shadow-sm backdrop-blur-md">
+      <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+            <FaSpotify size={22} />
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+            <FaApple size={22} />
+          </a>
         </div>
-        <div className="flex items-center items-justify space-x-4">
-          <button className="text-gray-500 hover:text-black" onClick={scrollToTop}>
-            <GrLinkTop size={20} style={{color: 'rgba(75, 85, 99, 0.22)'}}/>
+        <div className="flex items-center gap-4 sm:gap-5">
+          <button onClick={toggleTheme} className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
+            {theme === 'light' ? <IoMoon size={22} /> : <IoSunny size={22} />}
           </button>
+          <a href="/" className="hidden sm:block text-gray-600 dark:text-gray-300 text-sm font-medium grey-qo-regular hover:text-gray-900 dark:hover:text-white transition-colors">
+            @musicdrawnby
+          </a>
         </div>
-
-        
       </div>
     </header>
   );
