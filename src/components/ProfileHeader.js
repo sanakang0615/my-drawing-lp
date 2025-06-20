@@ -22,7 +22,7 @@ const ProfileHeader = () => {
           Sana Kang
         </h2>
         <p className="text-sm text-gray-500 dark:text-gray-500 mt-4">
-          {`2024 • ${totalTracks} songs`}
+          {`2025 • ${totalTracks} songs`}
         </p>
       </div>
     </div>
