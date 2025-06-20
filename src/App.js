@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PinterestGrid from './components/PinterestGrid';
-import Header from './components/Header';
 import Footer from './components/Footer';
 import MusicPlayer from './components/MusicPlayer';
 import items from './items.json'; // Assuming you have the JSON file
@@ -31,9 +30,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <Header theme={theme} toggleTheme={toggleTheme} />
       
-      <main className="pt-16">
+      <main className="pt-7">
         <ProfileHeader />
         
         <section id="gallery" className="py-12 md:py-20 px-6 md:px-12">
@@ -61,7 +59,7 @@ function App() {
         </>
       )}
       
-      {isContentLoaded && (<Footer />)}
+      {isContentLoaded && (<Footer theme={theme} toggleTheme={toggleTheme} />)}
     </div>
   );
 }
